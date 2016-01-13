@@ -56,7 +56,7 @@ public class DocumentTable {
 	 * @author Oh Chin Boon
 	 * @since 1.0.0
 	 */
-	public static final String DEFAULT_AWS_CREDENTIALS_PROPERTIES_FILE = "/usr/portalbackendengine/awsCredentials.properties";
+	public static final String DEFAULT_AWS_CREDENTIALS_PROPERTIES_FILE = "/usr/dynamodbbatchwriteitemmanagedretry/awsCredentials.properties";
 
 	/**
 	 * Calling this constructor will initialize DocumentTable using an Aws
