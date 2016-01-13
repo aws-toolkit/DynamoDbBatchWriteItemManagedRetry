@@ -5,6 +5,8 @@ DynamoDbBatchWriteItemManagedRetry will re-process the failed operations that ar
 
 ## Usage
 ```java
+import com.github.awstoolkit.dynamodbbatchwriteitemmanagedretry.DocumentTable;
+...
 final DocumentTable documentTable = new DocumentTable(accessKey, secretKey);
 documentTable.batchSaveItem(itemList);
 ```
