@@ -103,6 +103,10 @@ public class DocumentTable {
 		this.client = client;
 	}
 
+	public DocumentTable(final AWSCredentials awsCredentials) {
+		this.initializeDynamoDb(awsCredentials);
+	}
+
 	/**
 	 * Sets the operating region.
 	 * 
@@ -142,7 +146,13 @@ public class DocumentTable {
 		final AWSCredentials credentials = new PropertiesFileCredentialsProvider(awsCredentialPropertiesFilePath)
 				.getCredentials();
 
-		this._initializeDynamoDb(credentials);
+		this.initializeDynamoDb(credentials);
+	}
+
+	private void initializeDynamoDb(final AWSCredentials awsCredentials) {
+		final AmazonDynamoDBClient client = new AmazonDynamoDBClient(awsCredentials);
+
+		this.client = client;
 	}
 
 	/**
@@ -156,15 +166,7 @@ public class DocumentTable {
 	private void initializeDynamoDb(final String accessKey, final String secretKey) {
 		final AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 
-		this._initializeDynamoDb(credentials);
-	}
-
-	private void _initializeDynamoDb(final AWSCredentials credentials) {
-		final AmazonDynamoDBClient client = new AmazonDynamoDBClient(credentials);
-
-		this.client = client;
-
-		this.dynamoDb = new DynamoDB(client);
+		this.initializeDynamoDb(credentials);
 	}
 
 	public List<BatchWriteItemOutcome> batchSaveItem(final Item... items) {
